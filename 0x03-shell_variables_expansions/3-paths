@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $PATH | cut -d ':' | wc -l
+echo $(( 1 + $(echo $PATH | grep --only_matching=':/' | wc -l) ))
