@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#  displays the content of the current directory
+
+# Loop through the files in the current directory
+for file in *
+do
+    # Check if the file is a hidden file
+    if [[ ${file:0:1} != "." ]]
+    then
+        echo "$file" | cut -d - -f 2-
+    fi
+done
