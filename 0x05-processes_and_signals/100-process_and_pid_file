@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # bash script to handle pid with files and signals
 
+echo $$ > 
+
 trap 'echo "Y U no love me?!"' SIGINT
+trap 'echo "I hate the kill command"; rm -f ; exit' SIGTERM
 
 while true
 do
