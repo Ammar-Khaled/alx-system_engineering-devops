@@ -1,1 +1,8 @@
 #!/usr/bin/env bash
+# Bash script that displays the PID of processes whose name contain the word bash
+
+pgrep -l bash
+
+# pgrep: search for processes by their name or other attributes and retrieve their process IDs (PIDs).
+# -l (or --list-name): list the process name along with its PID. Without this option, pgrep would only display the PIDs.
+# bash: an argument passed to pgrep to specify the pattern or name to search for.
