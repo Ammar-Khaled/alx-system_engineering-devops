@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 # a script that kills the 7-highlander process
 pgrep -f 7-highlander | xargs kill -9
+
+# pgrep: search for processes.
+# -f option allows searching for the process using the full command line.
+# xargs kill -9
+# The xargs command reads the output from pgrep (process IDs) and passes them as arguments to the kill command.
+# The -9 option for kill sends a SIGKILL signal to forcefully terminate the process.
