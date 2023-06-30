@@ -1,1 +1,10 @@
 #!/usr/bin/env bash
+# bash script to handle pid with files and signals
+
+trap 'echo "Y U no love me?!"' SIGINT
+
+while true
+do
+    echo ""
+    sleep 2
+done
