@@ -1,8 +1,3 @@
 #!/usr/bin/env bash
 #Bash script that kills a process
 pgrep -f 4-to_infinity_and_beyond | xargs kill -15
-
-# pgrep find the process ID (PID) of a process that matches the pattern "4-to_infinity_and_beyond"
-# -f for full command line tells the command to match the pattern against the entire command line of the process 
-# instead of just the process name.
-# then uses xargs to pass that PID to the kill command with the signal -15 (SIGTERM).
