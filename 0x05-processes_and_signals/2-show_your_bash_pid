@@ -1,1 +1,5 @@
 #!/usr/bin/env bash
+# Show my Bash PID
+# shellcheck disable=SC2009
+
+ps -aux --forest | grep bash
