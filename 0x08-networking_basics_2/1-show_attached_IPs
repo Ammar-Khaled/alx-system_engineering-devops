@@ -1,1 +1,11 @@
 #!/usr/bin/env bash
+# Bash script that displays all active IPv4 IPs on the machine
+
+# An Example of a network interface after running the ifconfig command:
+
+# eth0     Link encap:Ethernet  HWaddr 00:0c:29:8f:f7:2f
+#          inet addr:192.168.1.100  Bcast:192.168.1.255  Mask:255.25
+
+# the inet addr field shows the IPv4 address assigned to the interface which we want to extract
+
+ifconfig | grep "inet addr" | cut -d ":" -f 2- | cut -d " " -d 1
