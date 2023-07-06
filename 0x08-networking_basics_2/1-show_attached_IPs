@@ -8,4 +8,4 @@
 
 # the inet addr field shows the IPv4 address assigned to the interface which we want to extract
 
-ifconfig | grep "inet addr" | cut -d ":" -f 2- | cut -d " " -d 1
+ifconfig | grep "inet addr:" | cut -d ':' -f 2- | cut -d ' ' -f 1
