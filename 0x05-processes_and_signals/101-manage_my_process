@@ -33,3 +33,4 @@ case "$1"
 		echo "Usage: manage_my_process {start|stop|restart}"
 		;;
 esac
+exit 0
