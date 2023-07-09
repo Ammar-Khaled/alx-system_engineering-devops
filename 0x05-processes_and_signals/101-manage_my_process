@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Bash(init) script that manages a subprocess
+# shellcheck source=/dev/null
 . /lib/lsb/init-functions
+
 
 PIDFILE=/var/run/my_process.pid
 
@@ -13,7 +15,7 @@ stop() {
     sudo kill -15 "$(cat "$PIDFILE")" && rm -f "$PIDFILE"
 }
 
-case "$1" in 
+case "$1" in
     start)
        start
        echo "manage_my_process started"
