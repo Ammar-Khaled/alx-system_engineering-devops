@@ -3,9 +3,11 @@
 
 # An Example of a network interface after running the ifconfig command:
 
-# eth0     Link encap:Ethernet  HWaddr 00:0c:29:8f:f7:2f
-#          inet addr:192.168.1.100  Bcast:192.168.1.255  Mask:255.25
+# lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+#         inet 127.0.0.1  netmask 255.0.0.0
+#         inet6 ::1  prefixlen 128  scopeid 0x10<host>
+#         ...
 
-# the inet addr field shows the IPv4 address assigned to the interface which we want to extract
+# the inet field shows the IPv4 address assigned to the interface which we want to extract
 
-ifconfig | grep "inet addr:" | cut -d ':' -f 2- | cut -d ' ' -f 1
+ifconfig | grep "inet " | cut -d ' ' -f 10
