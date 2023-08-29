@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # This script configures a new Ubuntu machine to:
 # Install nginx on my web-01 server
-sudo apt-get -y update
-sudo apt-get -y install nginx
+apt-get -y update
+apt-get -y install nginx
 
 # Make Nginx listen on port 80
 # it is already the default case
@@ -11,4 +11,4 @@ sudo apt-get -y install nginx
 # it must return a page that contains the string Hello World!
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
-nginx -s reload
+service nginx start
