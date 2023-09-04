@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Install and configure HAproxy
+
+sudo apt-get -y update
+sudo apt-get install --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-2.8
+sudo apt-get install haproxy=2.8.\*
+sudo echo -e '\nfrontend myfrontend\n  bind 100.26.212.26:80\n  default_backend myservers' >> /etc/haproxy/haproxy.cfg
+sudo echo -e '\nbackend myservers\n  balance roundrobin\n  server 283481-web-01 54.237.43.214:80 check\n  server 283481-web-02 54.208.103.110:8 check' >> /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
