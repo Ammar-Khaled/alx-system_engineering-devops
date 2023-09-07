@@ -45,7 +45,6 @@ frontend http
 
 frontend www-https
         bind *:443 ssl crt /etc/haproxy/certs/www.ammarnoor.tech.pem
-        mode https
         default_backend myservers
         http-request set-header X-Forwarded-Protocol https
         http-request redirect scheme https unless { ssl_fc }
