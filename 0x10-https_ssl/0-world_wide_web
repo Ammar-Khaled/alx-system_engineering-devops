@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Script that displays information about subdomains.
 
-function() {
+fun() {
     if [ -n "$2" ]
     then
 	    dig "$2.$1" | grep -A1 'ANSWER SECTION:' | paste - - | awk -v subdom="$2" '{print "The subdomain " subdom " is a " $7 " record and points to " $8}'
@@ -13,4 +13,4 @@ function() {
     fi
 }
 
-function "$1" "$2"
+fun "$1" "$2"
