@@ -23,7 +23,7 @@ if __name__ == "__main__":
         if todo.get('completed'):
             completed_todos.append(todo)
 
-    print(f'Employee {emp_name} is done with '\
+    print(f'Employee {emp_name} is done with '
           f'tasks({len(completed_todos)}/{len(emp_todos)}):')
     for todo in completed_todos:
         print(f'\t {todo.get("title")}')
