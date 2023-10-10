@@ -1,14 +1,10 @@
 #!/usr/bin/python3
-"""
-Return a list containing the titles of all hot articles
-for a given subreddit.
-"""
+"""Return a list of titles of all hot articles for a given subreddit."""
 import requests
 
 
 def recurse(subreddit, hot_list=[], after=None):
     """Print the titles of all hot posts for a given subreddit."""
-
     r = requests.get(f"https://www.reddit.com/r/{subreddit}/hot.json",
                      headers={'User-Agent': 'Mozilla/5.0'},
                      params={'after': after},
