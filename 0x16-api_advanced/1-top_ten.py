@@ -11,27 +11,27 @@ def top_ten(subreddit):
                      allow_redirects=False)
 
     if (r.status_code != 200):
-        print('None')
+        print(None)
         return
 
     dict = r.json()
     if 'data' not in dict.keys():
-        print('None')
+        print(None)
         return
 
     if 'children' not in dict['data'].keys():
-        print('None')
+        print(None)
         return
 
     i = 1
     for child in dict['data']['children']:
         if i <= 10:
             if 'data' not in child.keys():
-                print('None')
+                print(None)
                 return
 
             if 'title' not in child['data']:
-                print('None')
+                print(None)
                 return
 
             print(child['data']['title'])
