@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-"""
-Function that queries the Reddit API and prints
-the top ten hot posts of a subreddit
-"""
+"""Print the titles of posts of a subreddit."""
 import requests
 
 
 def add_title(hot_list, hot_posts):
-    """ Adds item into a list """
+    """Add item into a list."""
     if len(hot_posts) == 0:
         return
     hot_list.append(hot_posts[0]['data']['title'])
@@ -16,7 +13,7 @@ def add_title(hot_list, hot_posts):
 
 
 def recurse(subreddit, hot_list=[], after=None):
-    """ Queries to Reddit API """
+    """Query to Reddit API."""
     u_agent = 'Mozilla/5.0'
     headers = {
         'User-Agent': u_agent
