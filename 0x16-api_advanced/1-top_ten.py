@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Print the titles of the first 10 hot posts for a given subreddit."""
 import requests
 
 
