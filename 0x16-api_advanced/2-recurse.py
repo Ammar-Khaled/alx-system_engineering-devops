@@ -14,18 +14,13 @@ def recurse(subreddit, hot_list=[], after=None):
         return None
 
     dict = r.json()
-    if 'data' not in dict.keys():
-        return None
-
-    if 'children' not in dict['data'].keys():
-        return None
     hot_posts = dict['data']['children']
 
     for post in hot_posts:
         hot_list.append(post['data']['title'])
 
     after = dict['data']['after']
-    if after is None:
+    if not after:
         return hot_list
 
-    return recurse(subreddit, hot_list, after=after)
+    return recurse(subreddit, hot_list=hot_list, after=after)
