@@ -33,6 +33,12 @@ def recurse(subreddit, hot_list=[], after=None):
         return None
 
     dic = res.json()
+    if 'data' not in dic.keys():
+        return None
+
+    if 'children' not in dic['data'].keys():
+        return None
+
     hot_posts = dic['data']['children']
     add_title(hot_list, hot_posts)
     after = dic['data']['after']
