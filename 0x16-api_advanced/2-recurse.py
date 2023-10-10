@@ -3,6 +3,15 @@
 import requests
 
 
+def add_title(hot_list, hot_posts):
+    """Add the titles of hot_posts to hot_list."""
+    if len(hot_posts) == 0:
+        return
+
+    hot_list.append(hot_posts[0]['data']['title'])
+    hot_posts.pop(0)
+    add_title(hot_list, hot_posts)
+
 def recurse(subreddit, hot_list=[], after=None):
     """Print the titles of all hot posts for a given subreddit."""
     r = requests.get(f"https://www.reddit.com/r/{subreddit}/hot.json",
@@ -16,8 +25,7 @@ def recurse(subreddit, hot_list=[], after=None):
     dict = r.json()
     hot_posts = dict['data']['children']
 
-    for post in hot_posts:
-        hot_list.append(post['data']['title'])
+    add_title(hot_list, hot_posts)
 
     after = dict['data']['after']
     if not after:
