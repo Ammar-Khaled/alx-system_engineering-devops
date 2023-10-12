@@ -4,24 +4,22 @@ import re
 import requests
 
 
-def add_title(dictionary, hot_posts, word_list):
+def add_title(dictionary, hot_posts):
     """Add item into a list."""
     if len(hot_posts) == 0:
         return
 
-    title = hot_posts[0]['data']['title'].lower().split()
-
-    for word in word_list:
-        key = word.lower()
-        if key not in dictionary:
-            dictionary[key] = 0
-        dictionary[key] += title.count(key)
-
+    title = hot_posts[0]['data']['title'].split()
+    for word in title:
+        for key in dictionary.keys():
+            c = re.compile("^{}$".format(key), re.I)
+            if c.findall(word):
+                dictionary[key] += 1
     hot_posts.pop(0)
-    add_title(dictionary, hot_posts, word_list)
+    add_title(dictionary, hot_posts)
 
 
-def recurse(subreddit, dictionary, word_list, after=None):
+def recurse(subreddit, dictionary, after=None):
     """Query to Reddit API."""
     u_agent = 'Mozilla/5.0'
     headers = {
@@ -29,8 +27,7 @@ def recurse(subreddit, dictionary, word_list, after=None):
     }
 
     params = {
-        'after': after,
-        'limit': 100
+        'after': after
     }
 
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
@@ -44,18 +41,21 @@ def recurse(subreddit, dictionary, word_list, after=None):
 
     dic = res.json()
     hot_posts = dic['data']['children']
-    add_title(dictionary, hot_posts, word_list)
+    add_title(dictionary, hot_posts)
     after = dic['data']['after']
     if not after:
         return
-    recurse(subreddit, dictionary, word_list, after=after)
+    recurse(subreddit, dictionary, after=after)
 
 
 def count_words(subreddit, word_list):
     """Init function."""
     dictionary = {}
 
-    recurse(subreddit, dictionary, word_list)
+    for word in word_list:
+        dictionary[word] = 0
+
+    recurse(subreddit, dictionary)
 
     list = sorted(dictionary.items(), key=lambda kv: kv[1], reverse=True)
 
