@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Reload Gunicorn workers in a graceful way with no downtime by sending a HangUP signal to the master
 
-ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
+pgrep gunicorn | sudo xargs kill -HUP
