@@ -10,4 +10,4 @@ if [ -z "$GUNICORN_MASTER_PID" ]; then
 fi
 
 # Send a HangUP signal to the master process
-kill -HUP $"GUNICORN_MASTER_PID"
+kill -HUP $GUNICORN_MASTER_PID
