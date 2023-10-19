@@ -1,13 +1,4 @@
 #!/usr/bin/env bash
 # Reload Gunicorn workers in a graceful way with no downtime by sending a HangUP signal to the master
 
-# Define the Gunicorn master process id
-GUNICORN_MASTER_PID=$(pgrep gunicorn | head -n 1)
-
-if [ -z "$GUNICORN_MASTER_PID" ]; then
-    echo "Gunicorn master process not found."
-    exit 1
-fi
-
-# Send a HangUP signal to the master process
-kill -HUP "$GUNICORN_MASTER_PID"
+ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
