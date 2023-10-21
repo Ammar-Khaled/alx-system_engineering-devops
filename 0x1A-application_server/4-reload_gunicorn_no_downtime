@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Reload Gunicorn workers in a graceful way with no downtime by sending a HangUP signal to the master
 
-pkill -SIGHUP gunicorn
+pkill -SIGUSR2 gunicorn
